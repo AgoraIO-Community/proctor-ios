@@ -78,7 +78,7 @@ class PtExamView: UIView {
             duringCountdown.agora_visible = true
             endLabel.agora_visible = true
             duringCountdown.timeInfo = timeInfo
-            duringCountdown.startTimer()
+            duringCountdown.stopTimer()
         }
     }
     
@@ -111,6 +111,7 @@ extension PtExamView: AgoraUIContentContainer {
         leaveButton.setTitle("pt_exam_leave_title".pt_localized(),
                              for: .normal)
         endLabel.text = "pt_room_label_exam_over".pt_localized()
+        endLabel.textAlignment = .center
         
         addSubviews([backgroundImageView,
                      exitButton,
