@@ -59,20 +59,8 @@
 
 #pragma mark - FcrProctorSceneDelegate
 - (void)onExitWithReason:(enum PtUISceneExitReason)reason {
-    AgoraProctorExitReason sdkReason = AgoraProctorExitReasonNormal;
-    
-    switch (reason) {
-        case PtUISceneExitReasonNormal:
-            sdkReason = AgoraProctorExitReasonNormal;
-            break;
-        case PtUISceneExitReasonKickOut:
-            sdkReason = AgoraProctorExitReasonKickOut;
-        default:
-            break;
-    }
-    
     [self.delegate proctorSDK:self
-                      didExit:sdkReason];
+                      didExit:reason];
 }
 
 #pragma mark - Public
