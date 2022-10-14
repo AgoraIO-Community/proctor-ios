@@ -42,8 +42,9 @@ class PtExamUIComponent: PtUIComponent {
         
         contextPool.room.registerRoomEventHandler(self)
         contextPool.group.registerGroupEventHandler(self)
+        contextPool.monitor.registerMonitorEventHandler(self)
         
-        checkExamState(countdown: 0)
+        checkExamState(countdown: 5)
         setAvatarInfo()
         localSubRoomCheck()
     }
@@ -61,16 +62,31 @@ class PtExamUIComponent: PtUIComponent {
 // MARK: - AgoraEduRoomHandler
 extension PtExamUIComponent: AgoraEduRoomHandler {
     public func onClassStateUpdated(state: AgoraEduContextClassState) {
-        checkExamState(countdown: 5)
+        checkExamState(countdown: 0)
     }
 }
 
-// MARK: - AgoraEduRoomHandler
+// MARK: - AgoraEduMonitorHandler
+extension PtExamUIComponent: AgoraEduMonitorHandler {
+    func onLocalConnectionUpdated(state: AgoraEduContextConnectionState) {
+        guard state == .aborted else {
+            return
+        }
+        exit()
+    }
+}
+
+// MARK: - AgoraEduUserHandler
 extension PtExamUIComponent: AgoraEduUserHandler {
     public func onCoHostUserListAdded(userList: [AgoraEduContextUserInfo],
                                       operatorUser: AgoraEduContextUserInfo?) {
         // mostly happend when rtm reconnects successfully
-        setupCohost()
+        let localUserId = contextPool.user.getLocalUserInfo().userUuid
+        guard let `subRoom` = subRoom,
+              userList.contains(where: {$0.userUuid == localUserId}) else {
+            return
+        }
+        startRenderLocalVideo()
     }
     
     public func onCoHostUserListRemoved(userList: [AgoraEduContextUserInfo],
@@ -83,7 +99,13 @@ extension PtExamUIComponent: AgoraEduUserHandler {
 // MARK: - AgoraEduSubRoomHandler
 extension PtExamUIComponent: AgoraEduSubRoomHandler {
     public func onJoinSubRoomSuccess(roomInfo: AgoraEduContextSubRoomInfo) {
-        setupCohost()
+        let localUserId = contextPool.user.getLocalUserInfo().userUuid
+        guard let `subRoom` = subRoom,
+              let list = subRoom.user.getCoHostList(),
+              list.contains(where: {$0.userUuid == localUserId}) else {
+            return
+        }
+        startRenderLocalVideo()
     }
 }
 
@@ -250,17 +272,6 @@ private extension PtExamUIComponent {
         })
     }
     
-    func setupCohost() {
-        let localUserId = contextPool.user.getLocalUserInfo().userUuid
-        guard let `subRoom` = subRoom,
-              let list = subRoom.user.getCoHostList(),
-              list.contains(where: {$0.userUuid == localUserId}) else {
-            return
-        }
-        
-        startRenderLocalVideo()
-    }
-    
     func exit() {
         if let subRoom = subRoom {
             subRoom.registerSubRoomEventHandler(self)
@@ -270,6 +281,7 @@ private extension PtExamUIComponent {
         
         contextPool.room.unregisterRoomEventHandler(self)
         contextPool.group.unregisterGroupEventHandler(self)
+        contextPool.monitor.unregisterMonitorEventHandler(self)
         
         stopRenderLocalVideo()
         

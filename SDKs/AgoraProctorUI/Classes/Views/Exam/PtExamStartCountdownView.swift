@@ -8,14 +8,13 @@
 import AgoraUIBaseViews
 
 protocol FcrExamStartCountdownViewDelegate: NSObjectProtocol {
-    func onStartExamTimerStopped()
+    func onStartExamTimerStarted()
 }
 
 class PtExamStartCountdownView: UIView {
     private lazy var bgImageView = UIImageView()
     private lazy var label = UILabel()
     private var timer: Timer?
-    private var count = 0
     
     private weak var delagate: FcrExamStartCountdownViewDelegate?
     
@@ -36,11 +35,13 @@ class PtExamStartCountdownView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startTimer(_ total: Int) {
+    func startTimer(countdown: Int,
+                    startTime: Int64) {
         guard timer == nil else {
             return
         }
-        count = total
+        
+        var count = countdown
         
         timer = Timer.scheduledTimer(withTimeInterval: 1,
                                      repeats: true,
@@ -49,16 +50,24 @@ class PtExamStartCountdownView: UIView {
                 return
             }
             
-            self.label.text = "\(self.count)"
+            let realTime = Int64(Date().timeIntervalSince1970 * 1000)
+            let beforeLeft = startTime - realTime
             
-            guard self.count > 0 else {
+            guard beforeLeft <= count * 1000 else {
+                return
+            }
+            self.delagate?.onStartExamTimerStarted()
+            
+            self.agora_visible = true
+            self.label.text = "\(count)"
+            
+            guard countdown > 0 else {
                 self.agora_visible = false
-                self.delagate?.onStartExamTimerStopped()
                 self.stopTimer()
                 return
             }
             
-            self.count -= 1
+            count -= 1
         })
     }
     
