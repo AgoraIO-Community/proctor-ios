@@ -45,6 +45,6 @@ Pod::Spec.new do |spec|
       ]
     end
 
-    spec.default_subspec = "Source"
+    spec.default_subspec = "Resources"
   end
   
