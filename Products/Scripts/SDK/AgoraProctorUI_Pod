@@ -1,7 +1,6 @@
   thirdLibs
   # open source libs
-  pod 'AgoraProctorSDK/Source', :path => '../../AgoraProctorSDK_Local.podspec'
-  pod 'AgoraProctorUI/Binary', :path => '../../AgoraProctorUI_Local.podspec'
+  pod 'AgoraProctorUI/Source', :path => '../../AgoraProctorUI_Local.podspec'
   pod 'AgoraWidgets/Binary', :path => '../../../open-apaas-extapp-ios/AgoraWidgets_Local.podspec'
   
   # common libs
