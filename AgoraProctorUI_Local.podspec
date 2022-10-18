@@ -27,16 +27,13 @@ Pod::Spec.new do |spec|
     spec.pod_target_xcconfig  = { "VALID_ARCHS" => "arm64 armv7 x86_64" } 
     spec.user_target_xcconfig = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
     spec.xcconfig             = { "BUILD_LIBRARY_FOR_DISTRIBUTION" => "YES" }
-  
-    spec.subspec "Resources" do |ss|
-      ss.resource_bundles = {
-        "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
-      }
-    end
 
     spec.subspec "Source" do |ss|
       ss.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
       ss.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
+      ss.resource_bundles = {
+        "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
+      }
     end
   
     spec.subspec "Binary" do |ss|
@@ -45,6 +42,6 @@ Pod::Spec.new do |spec|
       ]
     end
 
-    spec.default_subspec = "Resources"
+    spec.default_subspec = "Source"
   end
   
