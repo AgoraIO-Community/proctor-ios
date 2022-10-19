@@ -15,9 +15,6 @@ Pod::Spec.new do |spec|
     spec.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
     spec.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
     
-    spec.dependency "AgoraUIBaseViews/Binary"
-    spec.dependency "AgoraEduCore/Binary"
-    spec.dependency "AgoraWidget/Binary"
     spec.dependency "SwifterSwift"
     spec.dependency "SDWebImage"
     spec.dependency "Masonry"
@@ -34,12 +31,29 @@ Pod::Spec.new do |spec|
       ss.resource_bundles = {
         "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
       }
+      ss.dependency "AgoraUIBaseViews/Source"
+      ss.dependency "AgoraEduCore/Source"
+      ss.dependency "AgoraWidget/Source"
+    end
+
+    spec.subspec "Build" do |ss|
+      ss.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
+      ss.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
+      ss.resource_bundles = {
+        "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
+      }
+      ss.dependency "AgoraUIBaseViews/Binary"
+      ss.dependency "AgoraEduCore/Binary"
+      ss.dependency "AgoraWidget/Binary"
     end
   
     spec.subspec "Binary" do |ss|
       ss.vendored_frameworks = [
         "Products/Libs/AgoraProctorUI/*.framework"
       ]
+      ss.dependency "AgoraUIBaseViews/Binary"
+      ss.dependency "AgoraEduCore/Binary"
+      ss.dependency "AgoraWidget/Binary"
     end
 
     spec.default_subspec = "Source"

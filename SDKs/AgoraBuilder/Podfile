@@ -35,7 +35,7 @@ target 'AgoraBuilder' do
   use_frameworks!
   thirdLibs
   # open source libs
-  pod 'AgoraProctorSDK/Source', :path => '../../AgoraProctorSDK_Local.podspec'
+  pod 'AgoraProctorSDK/Build', :path => '../../AgoraProctorSDK_Local.podspec'
   pod 'AgoraProctorUI/Binary', :path => '../../AgoraProctorUI_Local.podspec'
   pod 'AgoraWidgets/Binary', :path => '../../../open-apaas-extapp-ios/AgoraWidgets_Local.podspec'
   
@@ -45,7 +45,6 @@ target 'AgoraBuilder' do
 
   # rtc
   preRtc
-
   post_install do |installer|
      installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|

@@ -20,31 +20,56 @@ Pod::Spec.new do |spec|
   spec.xcconfig             = { "BUILD_LIBRARY_FOR_DISTRIBUTION" => "YES" }
   spec.pod_target_xcconfig  = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
   spec.user_target_xcconfig = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
-
-    # open source libs
-  spec.dependency "AgoraProctorUI/Binary"
-
-    # open sources widgets
-  spec.dependency "AgoraWidgets/Binary"
-    
-    # close source libs
-  spec.dependency "AgoraEduCore/Binary"
-  spec.dependency "AgoraWidget/Binary"
   
   spec.subspec "Source" do |ss|
     ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
     ss.public_header_files = [
       "SDKs/AgoraProctorSDK/Public/*.h"
   ]
+
+    # open source libs
+    ss.dependency "AgoraProctorUI/Source"
+
+    # open sources widgets
+    ss.dependency "AgoraWidgets/Source"
+      
+    # close source libs
+    ss.dependency "AgoraEduCore/Source"
+    ss.dependency "AgoraWidget/Source"
+  end
+
+  spec.subspec "Build" do |ss|
+    ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
+    ss.public_header_files = [
+      "SDKs/AgoraProctorSDK/Public/*.h"
+  ]
+
+    # open source libs
+    ss.dependency "AgoraProctorUI/Binary"
+
+    # open sources widgets
+    ss.dependency "AgoraWidgets/Binary"
+      
+    # close source libs
+    ss.dependency "AgoraEduCore/Binary"
+    ss.dependency "AgoraWidget/Binary"
   end
   
   spec.subspec "Binary" do |ss|
     ss.vendored_frameworks = [
       "Products/Libs/AgoraProctorSDK/*.framework"
     ]
+
+    # open source libs
+    ss.dependency "AgoraProctorUI/Binary"
+
+    # open sources widgets
+    ss.dependency "AgoraWidgets/Binary"
+      
+    # close source libs
+    ss.dependency "AgoraEduCore/Binary"
+    ss.dependency "AgoraWidget/Binary"
   end
 
   spec.default_subspec = "Source"
-
-
 end
