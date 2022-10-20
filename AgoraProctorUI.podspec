@@ -12,11 +12,7 @@ Pod::Spec.new do |spec|
     spec.swift_versions        = ["5.0", "5.1", "5.2", "5.3", "5.4"]
   
     spec.source              = { :git => "git@github.com:AgoraIO-Community/CloudClass-iOS.git", :tag => "AgoraProctorUI_v" + "#{spec.version.to_s}" }
-    spec.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
-    spec.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
     
-    spec.dependency "AgoraUIBaseViews", ">=2.8.0"
-    spec.dependency "AgoraEduCore", ">=2.8.0"
     spec.dependency "Masonry"
     spec.dependency "SwifterSwift"
     spec.dependency "SDWebImage"
@@ -26,11 +22,41 @@ Pod::Spec.new do |spec|
     spec.pod_target_xcconfig  = { "VALID_ARCHS" => "arm64 armv7 x86_64" } 
     spec.user_target_xcconfig = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
     spec.xcconfig             = { "BUILD_LIBRARY_FOR_DISTRIBUTION" => "YES" }
-  
-    spec.subspec "Resources" do |ss|
+
+    spec.subspec "Source" do |ss|
+      ss.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
+      ss.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
       ss.resource_bundles = {
         "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
       }
+  
+      ss.dependency "AgoraUIBaseViews/Source"
+      ss.dependency "AgoraEduCore/Source"
+      ss.dependency "AgoraWidget/Source"
     end
+  
+    spec.subspec 'Build' do |ss|   
+      ss.public_header_files = "SDKs/AgoraProctorUI/Classes/**/*.h"
+      ss.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
+      ss.resource_bundles = {
+        "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
+      }
+  
+      ss.dependency "AgoraUIBaseViews/Binary"
+      ss.dependency "AgoraEduCore/Binary"
+      ss.dependency "AgoraWidget/Binary"
+    end
+    
+    spec.subspec "Binary" do |ss|
+      ss.vendored_frameworks = [
+        "Products/Libs/AgoraProctorUI/*.framework"
+      ]
+  
+      ss.dependency "AgoraUIBaseViews/Binary"
+      ss.dependency "AgoraEduCore/Binary"
+      ss.dependency "AgoraWidget/Binary"
+    end
+  
+    spec.default_subspec = "Source"
   end
   
