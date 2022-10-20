@@ -64,8 +64,6 @@
         self.encryptionConfig = encryptionConfig;
         self.videoEncoderConfig = videoEncoderConfig;
         self.latencyLevel = latencyLevel;
-        self.videoState = videoState;
-        self.audioState = audioState;
     }
     
     return self;
