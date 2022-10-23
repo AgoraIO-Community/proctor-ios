@@ -61,7 +61,7 @@ class PtExamStartCountdownView: UIView {
             self.agora_visible = true
             self.label.text = "\(count)"
             
-            guard countdown > 0 else {
+            guard count > 0 else {
                 self.agora_visible = false
                 self.stopTimer()
                 return

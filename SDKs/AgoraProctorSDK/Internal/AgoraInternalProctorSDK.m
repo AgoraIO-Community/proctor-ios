@@ -58,7 +58,7 @@
                                                                                       startTime:nil
                                                                                        duration:nil
                                                                                           appId:config.appId
-                                                                                       rtmToken:config.token
+                                                                                          token:config.token
                                                                                          region:config.region
                                                                                    mediaOptions:mediaOptions];
     
@@ -88,8 +88,8 @@
     AgoraEduCoreMediaOptions *mediaOptions = [[AgoraEduCoreMediaOptions alloc] initWithEncryptionConfig:encryptionConfig
                                                                                             videoConfig:videoConfig
                                                                                            latencyLevel:options.latencyLevel
-                                                                                             videoState:options.videoState
-                                                                                             audioState:options.audioState];
+                                                                                             videoState:AgoraEduCoreStreamStateOff
+                                                                                             audioState:AgoraEduCoreStreamStateOff];
     return mediaOptions;
 }
 @end
