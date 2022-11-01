@@ -31,6 +31,7 @@ Pod::Spec.new do |spec|
       ss.resource_bundles = {
         "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
       }
+
       ss.dependency "AgoraUIBaseViews/Source"
       ss.dependency "AgoraEduCore/Source"
       ss.dependency "AgoraWidget/Source"
@@ -42,6 +43,7 @@ Pod::Spec.new do |spec|
       ss.resource_bundles = {
         "AgoraProctorUI" => ["SDKs/AgoraProctorUI/Assets/**/*.{xcassets,strings,gif,mp3}"]
       }
+
       ss.dependency "AgoraUIBaseViews/Binary"
       ss.dependency "AgoraEduCore/Binary"
       ss.dependency "AgoraWidget/Binary"
@@ -51,6 +53,7 @@ Pod::Spec.new do |spec|
       ss.vendored_frameworks = [
         "Products/Libs/AgoraProctorUI/*.framework"
       ]
+      
       ss.dependency "AgoraUIBaseViews/Binary"
       ss.dependency "AgoraEduCore/Binary"
       ss.dependency "AgoraWidget/Binary"
