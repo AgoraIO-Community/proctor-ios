@@ -29,9 +29,6 @@ Pod::Spec.new do |spec|
 
     # open source libs
     ss.dependency "AgoraProctorUI/Source"
-
-    # open sources widgets
-    ss.dependency "AgoraWidgets/Source"
       
     # close source libs
     ss.dependency "AgoraEduCore/Source"
@@ -46,9 +43,6 @@ Pod::Spec.new do |spec|
 
     # open source libs
     ss.dependency "AgoraProctorUI/Binary"
-
-    # open sources widgets
-    ss.dependency "AgoraWidgets/Binary"
       
     # close source libs
     ss.dependency "AgoraEduCore/Binary"
@@ -62,9 +56,6 @@ Pod::Spec.new do |spec|
 
     # open source libs
     ss.dependency "AgoraProctorUI/Binary"
-
-    # open sources widgets
-    ss.dependency "AgoraWidgets/Binary"
       
     # close source libs
     ss.dependency "AgoraEduCore/Binary"
