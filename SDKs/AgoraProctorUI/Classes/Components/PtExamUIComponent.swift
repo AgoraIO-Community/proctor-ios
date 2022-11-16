@@ -22,6 +22,7 @@ class PtExamUIComponent: PtUIComponent {
     private var subRoom: AgoraEduSubRoomContext?
     
     /**data**/
+    private let localStreamId = "0"
     private var currentFront: Bool = true
     
     @objc public init(contextPool: AgoraEduContextPool,
@@ -47,6 +48,8 @@ class PtExamUIComponent: PtUIComponent {
         checkExamState(countdown: 5)
         setAvatarInfo()
         localSubRoomCheck()
+        
+        startRenderLocalVideo()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -73,47 +76,6 @@ extension PtExamUIComponent: AgoraEduMonitorHandler {
             return
         }
         exit()
-    }
-}
-
-// MARK: - AgoraEduUserHandler
-extension PtExamUIComponent: AgoraEduUserHandler {
-    public func onCoHostUserListAdded(userList: [AgoraEduContextUserInfo],
-                                      operatorUser: AgoraEduContextUserInfo?) {
-        // mostly happend when rtm reconnects successfully
-        let localUserId = contextPool.user.getLocalUserInfo().userUuid
-        guard let `subRoom` = subRoom,
-              userList.contains(where: {$0.userUuid == localUserId}) else {
-            return
-        }
-        startRenderLocalVideo()
-    }
-    
-    public func onCoHostUserListRemoved(userList: [AgoraEduContextUserInfo],
-                                        operatorUser: AgoraEduContextUserInfo?) {
-        // mostly happend when rtm disconnects
-        stopRenderLocalVideo()
-    }
-}
-
-// MARK: - AgoraEduSubRoomHandler
-extension PtExamUIComponent: AgoraEduSubRoomHandler {
-    public func onJoinSubRoomSuccess(roomInfo: AgoraEduContextSubRoomInfo) {
-        let localUserId = contextPool.user.getLocalUserInfo().userUuid
-        guard let `subRoom` = subRoom,
-              let list = subRoom.user.getCoHostList(),
-              list.contains(where: {$0.userUuid == localUserId}) else {
-            return
-        }
-        startRenderLocalVideo()
-    }
-}
-
-// MARK: - AgoraEduStreamHandler
-extension PtExamUIComponent: AgoraEduStreamHandler {
-    public func onStreamJoined(stream: AgoraEduContextStreamInfo,
-                               operatorUser: AgoraEduContextUserInfo?) {
-        startRenderLocalVideo()
     }
 }
 
@@ -259,11 +221,8 @@ private extension PtExamUIComponent {
         
         subRoom = localSubRoom
         
-        localSubRoom.registerSubRoomEventHandler(self)
-        localSubRoom.stream.registerStreamEventHandler(self)
-        localSubRoom.user.registerUserEventHandler(self)
-        
         AgoraLoading.loading()
+        
         localSubRoom.joinSubRoom(success: { [weak self] in
             AgoraLoading.hide()
         }, failure: { [weak self] error in
@@ -273,12 +232,6 @@ private extension PtExamUIComponent {
     }
     
     func exit() {
-        if let subRoom = subRoom {
-            subRoom.registerSubRoomEventHandler(self)
-            subRoom.stream.registerStreamEventHandler(self)
-            subRoom.user.unregisterUserEventHandler(self)
-        }
-        
         contextPool.room.unregisterRoomEventHandler(self)
         contextPool.group.unregisterGroupEventHandler(self)
         contextPool.monitor.unregisterMonitorEventHandler(self)
@@ -290,35 +243,16 @@ private extension PtExamUIComponent {
     }
     
     func startRenderLocalVideo() {
-        // 大房间不发流
-        guard let `subRoom` = subRoom else {
-            return
-        }
-        let userId = subRoom.user.getLocalUserInfo().userUuid
-        let localStreamList = subRoom.stream.getStreamList(userUuid: userId)
-        
-        guard let streamId = localStreamList?.first(where: {$0.videoSourceType == .camera})?.streamUuid else {
-            return
-        }
-        
         let renderConfig = AgoraEduContextRenderConfig()
         renderConfig.mode = .hidden
-        
-        contextPool.media.startRenderVideo(roomUuid: subRoom.getSubRoomInfo().subRoomUuid,
-                                           view: contentView.renderView,
+
+        contextPool.media.startRenderVideo(view: contentView.renderView,
                                            renderConfig: renderConfig,
-                                           streamUuid: streamId)
+                                           streamUuid: localStreamId)
     }
     
     func stopRenderLocalVideo() {
-        let userId = contextPool.user.getLocalUserInfo().userUuid
-        let localStreamList = contextPool.stream.getStreamList(userUuid: userId)
-        
-        guard let streamId = localStreamList?.first(where: {$0.videoSourceType == .camera})?.streamUuid  else {
-            return
-        }
-        
-        contextPool.media.stopRenderVideo(streamUuid: streamId)
+        contextPool.media.stopRenderVideo(streamUuid: localStreamId)
     }
     
     func getUserSubroomId(userIdPrefix: String) -> String {
@@ -333,6 +267,5 @@ private extension PtExamUIComponent {
         }
         
         return list.contains(where: {$0.subRoomUuid == subRoomId})
-        
     }
 }
