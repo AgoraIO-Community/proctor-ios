@@ -267,6 +267,5 @@ private extension PtExamUIComponent {
         }
         
         return list.contains(where: {$0.subRoomUuid == subRoomId})
-        
     }
 }
