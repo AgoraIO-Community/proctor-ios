@@ -39,7 +39,7 @@ fi
 Remote_Cmd=`git remote | grep 'originGithub'`
 if [[ -z $Remote_Cmd ]]; then
     echo "Add remote originGithub"
-    git remote add originGithub 'git@github.com:AgoraIO-Community/CloudClass-iOS.git'
+    git remote add originGithub 'git@github.com:AgoraIO-Community/proctor-ios.git'
 fi
 
 # tag check
