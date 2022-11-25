@@ -41,16 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) AgoraProctorVideoEncoderConfig *videoEncoderConfig;
 // RTC观众延时级别,默认lowlatency（极速直播）
 @property (nonatomic, assign) AgoraProctorLatencyLevel latencyLevel;
-// 学生上麦默认打开/关闭视频
-@property (nonatomic, assign) AgoraProctorStreamState videoState;
-// 学生上麦默认打开/关闭音频
-@property (nonatomic, assign) AgoraProctorStreamState audioState;
 
 - (instancetype)initWithEncryptionConfig:(AgoraProctorMediaEncryptionConfig * _Nullable)encryptionConfig
                       videoEncoderConfig:(AgoraProctorVideoEncoderConfig * _Nullable)videoEncoderConfig
-                            latencyLevel:(AgoraProctorLatencyLevel)latencyLevel
-                              videoState:(AgoraProctorStreamState)videoState
-                              audioState:(AgoraProctorStreamState)audioState;
+                            latencyLevel:(AgoraProctorLatencyLevel)latencyLevel;
 @end
 
 #pragma mark - Launch

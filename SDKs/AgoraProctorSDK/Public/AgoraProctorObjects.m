@@ -55,17 +55,13 @@
 @implementation AgoraProctorMediaOptions
 - (instancetype)initWithEncryptionConfig:(AgoraProctorMediaEncryptionConfig * _Nullable)encryptionConfig
                       videoEncoderConfig:(AgoraProctorVideoEncoderConfig * _Nullable)videoEncoderConfig
-                            latencyLevel:(AgoraProctorLatencyLevel)latencyLevel
-                              videoState:(AgoraProctorStreamState)videoState
-                              audioState:(AgoraProctorStreamState)audioState {
+                            latencyLevel:(AgoraProctorLatencyLevel)latencyLevel {
     self = [super init];
     
     if (self) {
         self.encryptionConfig = encryptionConfig;
         self.videoEncoderConfig = videoEncoderConfig;
         self.latencyLevel = latencyLevel;
-        self.videoState = videoState;
-        self.audioState = audioState;
     }
     
     return self;
@@ -82,10 +78,8 @@
                            appId:(NSString *)appId
                            token:(NSString *)token {
     AgoraProctorMediaOptions *mediaOptions = [[AgoraProctorMediaOptions alloc] initWithEncryptionConfig:nil
-                                                                             videoEncoderConfig:nil
-                                                                                   latencyLevel:AgoraEduCoreLatencyLevelUltraLow
-                                                                                     videoState:AgoraEduCoreStreamStateOn
-                                                                                     audioState:AgoraEduCoreStreamStateOn];
+                                                                                     videoEncoderConfig:nil
+                                                                                           latencyLevel:AgoraEduCoreLatencyLevelUltraLow];
     return [self initWithUserName:userName
                          userUuid:userUuid
                          userRole:userRole

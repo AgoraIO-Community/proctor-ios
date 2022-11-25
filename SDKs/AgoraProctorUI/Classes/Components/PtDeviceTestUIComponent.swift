@@ -41,6 +41,7 @@ class PtDeviceTestUIComponent: PtUIComponent {
         updateViewProperties()
         
         contextPool.room.registerRoomEventHandler(self)
+        contextPool.monitor.registerMonitorEventHandler(self)
         
         checkCameraState()
         setAvatarInfo()
@@ -60,9 +61,20 @@ class PtDeviceTestUIComponent: PtUIComponent {
     }
 }
 
+// MARK: - AgoraEduRoomHandler
 extension PtDeviceTestUIComponent: AgoraEduRoomHandler {
     public func onJoinRoomSuccess(roomInfo: AgoraEduContextRoomInfo) {
         delegate?.onDeviceTestJoinExamSuccess()
+    }
+}
+
+// MARK: - AgoraEduMonitorHandler
+extension PtDeviceTestUIComponent: AgoraEduMonitorHandler {
+    func onLocalConnectionUpdated(state: AgoraEduContextConnectionState) {
+        guard state == .aborted else {
+            return
+        }
+        exit()
     }
 }
 
@@ -110,12 +122,7 @@ extension PtDeviceTestUIComponent: AgoraUIContentContainer {
 // MARK: - private
 private extension PtDeviceTestUIComponent {
     @objc func onClickExitRoom() {
-        contextPool.room.unregisterRoomEventHandler(self)
-        
-        let streamId = "0"
-        contextPool.media.stopRenderVideo(streamUuid: streamId)
-        
-        self.delegate?.onDeviceTestExit()
+        exit()
     }
     
     @objc func onClickSwitchCamera() {
@@ -149,6 +156,16 @@ private extension PtDeviceTestUIComponent {
            let avatarUrl = props["avatar"] as? String {
             contentView.renderView.setAvartarImage(avatarUrl)
         }
+    }
+    
+    func exit() {
+        contextPool.room.unregisterRoomEventHandler(self)
+        contextPool.monitor.unregisterMonitorEventHandler(self)
+        
+        let streamId = "0"
+        contextPool.media.stopRenderVideo(streamUuid: streamId)
+        
+        self.delegate?.onDeviceTestExit()
     }
     
     func applicationDidEnterForeground(notification: NSNotification) {

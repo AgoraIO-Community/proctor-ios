@@ -12,8 +12,9 @@ import AgoraEduCore
 }
 
 enum FcrProctorUIExamState {
-    case before
-    case during(countdown: Int,timeInfo: FcrProctorExamTimeInfo)
+    case before(countdown: Int,
+                startTime: Int64)
+    case during(timeInfo: FcrProctorExamTimeInfo)
     case after(timeInfo: FcrProctorExamTimeInfo)
 }
 

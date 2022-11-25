@@ -50,26 +50,22 @@ class PtExamView: UIView {
     
     func updateViewWithState(_ state: FcrProctorUIExamState) {
         switch state {
-        case .before:
+        case .before(let countdown,
+                     let startTime):
             examNameLabel.agora_visible = true
             beforeExamTipLabel.agora_visible = true
             duringCountdown.agora_visible = false
             endLabel.agora_visible = false
-        case .during(let countdown,
-                     let timeInfo):
+            beforeExamCountdown.startTimer(countdown: countdown,
+                                           startTime: startTime)
+        case .during(let timeInfo):
             examNameLabel.agora_visible = false
             beforeExamTipLabel.agora_visible = false
+            beforeExamCountdown.agora_visible = false
+            beforeExamCountdown.stopTimer()
             endLabel.agora_visible = false
             
-            if countdown > 0 {
-                duringCountdown.agora_visible = false
-                beforeExamCountdown.agora_visible = true
-                beforeExamCountdown.startTimer(countdown)
-            } else {
-                beforeExamCountdown.agora_visible = false
-                duringCountdown.agora_visible = true
-            }
-            
+            duringCountdown.agora_visible = true
             duringCountdown.timeInfo = timeInfo
             duringCountdown.startTimer()
         case .after(let timeInfo):
@@ -78,7 +74,7 @@ class PtExamView: UIView {
             duringCountdown.agora_visible = true
             endLabel.agora_visible = true
             duringCountdown.timeInfo = timeInfo
-            duringCountdown.startTimer()
+            duringCountdown.stopTimer()
         }
     }
     
@@ -94,9 +90,8 @@ class PtExamView: UIView {
 
 // MARK: - FcrExamStartCountdownViewDelegate
 extension PtExamView: FcrExamStartCountdownViewDelegate {
-    func onStartExamTimerStopped() {
-        beforeExamCountdown.agora_visible = false
-        duringCountdown.agora_visible = true
+    func onStartExamTimerStarted() {
+        beforeExamTipLabel.agora_visible = false
     }
 }
 
@@ -111,6 +106,7 @@ extension PtExamView: AgoraUIContentContainer {
         leaveButton.setTitle("pt_exam_leave_title".pt_localized(),
                              for: .normal)
         endLabel.text = "pt_room_label_exam_over".pt_localized()
+        endLabel.textAlignment = .center
         
         addSubviews([backgroundImageView,
                      exitButton,

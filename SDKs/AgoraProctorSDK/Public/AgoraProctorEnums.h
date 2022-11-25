@@ -23,12 +23,6 @@ typedef AgoraEduCoreRegion AgoraProctorRegion;
 
 typedef AgoraEduCoreMediaEncryptionMode AgoraProctorMediaEncryptionMode;
 
-
-typedef NS_ENUM(NSInteger, AgoraProctorExitReason) {
-    // 正常退出
-    AgoraProctorExitReasonNormal = 0,
-    // 被踢出
-    AgoraProctorExitReasonKickOut = 1
-};
+typedef PtUISceneExitReason AgoraProctorExitReason;
 
 NS_ASSUME_NONNULL_END
