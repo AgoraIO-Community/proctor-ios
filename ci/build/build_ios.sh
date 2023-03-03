@@ -114,7 +114,7 @@ do
   errorPrint $? "${SDK} Build"
   
   # publish
-  if [ "${Package_Publish}" = true ];then
+  if [ "${Package_Publish}" = true ]; then
     ${Pack_Path}/package_artifactory.sh ${SDK} ${Repo_Name} ${BUILD_NUMBER}
 
     errorPrint $? "${SDK} Package"
