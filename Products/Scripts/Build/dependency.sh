@@ -7,13 +7,11 @@ echo pwd: `pwd`
 . ../../../../apaas-cicd-ios/Products/Scripts/Other/v1/operation_print.sh
 
 # parameters
-SDK_Name=$1
-Repo_Name=$2
+Repo_Name=$1
 
-parameterCheckPrint ${SDK_Name}
+startPrint "${Repo_Name} Download Dependency Libs"
+
 parameterCheckPrint ${Repo_Name}
-
-startPrint "${SDK_Name} Download Dependency Libs"
 
 # path
 Root_Path="../../.."
@@ -36,7 +34,7 @@ do
     python3 ${WORKSPACE}/artifactory_utils.py --action=download_file --file=${SDK_URL}
 done
 
-errorPrint $? "${SDK_Name} Download Dependency Libs"
+errorPrint $? "${Repo_Name} Download Dependency Libs"
 
 echo Dependency Libs
 
@@ -53,4 +51,4 @@ do
     ${Root_Path}/../apaas-cicd-ios/Products/Scripts/SDK/Build/v1/unzip.sh ${SDK} ${Repo_Name}
 done
 
-endPrint $? "${SDK_Name} Download Dependency Libs"
+endPrint $? "${Repo_Name} Download Dependency Libs"

@@ -103,7 +103,7 @@ Pack_Path=${Scripts_Path}/Pack
 Repo_Name="open-proctor-ios"
 
 # dependency
-${Build_Path}/dependency.sh "AgoraProctorSDK" ${Repo_Name}
+${Build_Path}/dependency.sh ${Repo_Name}
 
 # build
 SDK_Array=(AgoraProctorUI AgoraProctorSDK)
