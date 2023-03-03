@@ -29,7 +29,7 @@ cd ../../../Package
 
 python3 ${WORKSPACE}/artifactory_utils.py --action=upload_file --file=${SDK_Name}*.zip --project
 
-errorPrint $? "$SDK_Name Package Artificatory"
+endPrint $? "$SDK_Name Package Artificatory"
 
 # remove
 rm ${SDK_Name}*.zip
