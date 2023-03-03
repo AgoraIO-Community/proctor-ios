@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'AgoraProctorSDK'
-  spec.version      = '1.0.0'
-  spec.summary      = 'Proctor scene SDK'
+  spec.name         = "AgoraProctorSDK"
+  spec.version      = "1.0.0"
+  spec.summary      = "Proctor scene SDK"
 
   spec.description  = "Proctor scene binary SDK "
 
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
     ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
     ss.public_header_files = [
       "SDKs/AgoraProctorSDK/Public/*.h"
-  ]
+    ]
 
     # open source libs
     ss.dependency "AgoraProctorUI/Source"
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
     ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
     ss.public_header_files = [
       "SDKs/AgoraProctorSDK/Public/*.h"
-  ]
+    ]
 
     # open source libs
     ss.dependency "AgoraProctorUI/Binary"
