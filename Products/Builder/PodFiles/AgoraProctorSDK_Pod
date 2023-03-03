@@ -5,4 +5,4 @@
   pod 'AgoraProctorUI/Binary',   :path => '../../../AgoraProctorUI_Local.podspec'
 
   # build
-  pod 'AgoraProctorSDK/Build', :path => '../../AgoraProctorSDK_Local.podspec'
+  pod 'AgoraProctorSDK/Build',   :path => '../../../AgoraProctorSDK_Local.podspec'
