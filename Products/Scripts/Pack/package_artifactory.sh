@@ -13,6 +13,9 @@ Repo_Name=$3
 
 startPrint "$SDK_Name Package Artificatory"
 
+parameterCheckPrint ${SDK_Name}
+parameterCheckPrint ${Repo_Name}
+
 # path
 CICD_Root_Path=../../../../apaas-cicd-ios
 CICD_Products_Path=${CICD_Root_Path}/Products

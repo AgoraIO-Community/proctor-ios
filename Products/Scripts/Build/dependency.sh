@@ -1,4 +1,18 @@
 #!/bin/bash
+
+# Difference
+# Dependency libs
+# EduCore
+# UIBaseViews
+# Widget
+Dep_Array_URL=("https://artifactory.agoralab.co/artifactory/AD_repo/Edu_Core_iOS/cavan/20230302/ios/AgoraEduCore_2.8.20_9.zip"
+               "https://artifactory.agoralab.co/artifactory/AD_repo/apaas_common_libs_ios/cavan/20230302/ios/AgoraUIBaseViews_2.8.0_82.zip"
+               "https://artifactory.agoralab.co/artifactory/AD_repo/apaas_common_libs_ios/cavan/20230302/ios/AgoraWidget_2.8.0_82.zip")
+
+Dep_Array=(AgoraEduCore
+           AgoraUIBaseViews 
+           AgoraWidget)
+
 # cd this file path
 cd $(dirname $0)
 echo pwd: `pwd`
@@ -15,18 +29,6 @@ parameterCheckPrint ${Repo_Name}
 
 # path
 Root_Path="../../.."
-
-# Dependency libs
-# EduCore
-# UIBaseViews
-# Widget
-Dep_Array_URL=("https://artifactory.agoralab.co/artifactory/AD_repo/Edu_Core_iOS/cavan/20230302/ios/AgoraEduCore_2.8.20_9.zip"
-               "https://artifactory.agoralab.co/artifactory/AD_repo/apaas_common_libs_ios/cavan/20230302/ios/AgoraUIBaseViews_2.8.0_82.zip"
-               "https://artifactory.agoralab.co/artifactory/AD_repo/apaas_common_libs_ios/cavan/20230302/ios/AgoraWidget_2.8.0_82.zip")
-
-Dep_Array=(AgoraEduCore
-           AgoraUIBaseViews 
-           AgoraWidget)
 
 for SDK_URL in ${Dep_Array_URL[*]} 
 do

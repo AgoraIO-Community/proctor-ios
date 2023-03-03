@@ -92,6 +92,10 @@ echo BUILD_NUMBER: ${BUILD_NUMBER}
 
 export all_proxy=http://10.80.1.174:1080
 
+# difference
+Repo_Name="open-proctor-ios"
+SDK_Array=(AgoraProctorUI AgoraProctorSDK)
+
 # import
 . ../apaas-cicd-ios/Products/Scripts/Other/v1/operation_print.sh
 
@@ -100,22 +104,19 @@ Scripts_Path=./Products/Scripts
 Build_Path=${Scripts_Path}/Build
 Pack_Path=${Scripts_Path}/Pack
 
-Repo_Name="open-proctor-ios"
-
 # dependency
 ${Build_Path}/dependency.sh ${Repo_Name}
 
 # build
-SDK_Array=(AgoraProctorUI AgoraProctorSDK)
-
 for SDK in ${SDK_Array[*]} 
 do
   ${Build_Path}/build.sh ${SDK} ${Repo_Name}
   
   errorPrint $? "${SDK} Build"
-
+  
+  # publish
   if [ "${Package_Publish}" = true ];then
-    ${Pack_Path}/package_artifactory.sh ${SDK} ${BUILD_NUMBER} ${Repo_Name}
+    ${Pack_Path}/package_artifactory.sh ${SDK} ${Repo_Name} ${BUILD_NUMBER}
 
     errorPrint $? "${SDK} Package"
   fi
