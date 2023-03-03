@@ -11,6 +11,7 @@ SDK_Name=$1
 Repo_Name=$2
 
 parameterCheckPrint ${SDK_Name}
+parameterCheckPrint ${Repo_Name}
 
 startPrint "${SDK_Name} Download Dependency Libs"
 
@@ -49,7 +50,7 @@ do
     mv -f ./${Zip_File}  ${Root_Path}/
 
     # unzip
-    ${Root_Path}/../apaas-cicd-ios/Products/Scripts/SDK/Build/v1/unzip.sh ${SDK} "${Repo_Name}"
+    ${Root_Path}/../apaas-cicd-ios/Products/Scripts/SDK/Build/v1/unzip.sh ${SDK} ${Repo_Name}
 done
 
 endPrint $? "${SDK_Name} Download Dependency Libs"
