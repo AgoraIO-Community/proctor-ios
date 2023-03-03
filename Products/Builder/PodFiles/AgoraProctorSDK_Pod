@@ -1,0 +1,8 @@
+  # binary libs
+  pod 'AgoraUIBaseViews/Binary', :path => '../../../AgoraUIBaseViews_Local.podspec'
+  pod 'AgoraWidget/Binary',      :path => '../../../AgoraWidget_Local.podspec'
+  pod 'AgoraEduCore/Binary',     :path => '../../../AgoraEduCore_Local.podspec'
+  pod 'AgoraProctorUI/Binary',   :path => '../../../AgoraProctorUI_Local.podspec'
+
+  # build
+  pod 'AgoraProctorSDK/Build', :path => '../../AgoraProctorSDK_Local.podspec'

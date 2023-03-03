@@ -81,10 +81,44 @@
 echo Package_Publish: $Package_Publish
 echo is_tag_fetch: $is_tag_fetch
 echo arch: $arch
-echo source_root: %source_root%
+echo source_root: $source_root
 echo output: /tmp/jenkins/${project}_out
 echo build_date: $build_date
 echo build_time: $build_time
 echo release_version: $release_version
 echo short_version: $short_version
 echo pwd: `pwd`
+echo BUILD_NUMBER: ${BUILD_NUMBER}
+
+export all_proxy=http://10.80.1.174:1080
+
+# import
+. ../apaas-cicd-ios/Products/Scripts/Other/v1/operation_print.sh
+
+# path
+Scripts_Path=./Products/Scripts
+Build_Path=${Scripts_Path}/Build
+Pack_Path=${Scripts_Path}/Pack
+
+Repo_Name="open-proctor-ios"
+
+# dependency
+${Build_Path}/dependency.sh ${SDK} ${Repo_Name}
+
+# build
+SDK_Array=(AgoraProctorUI AgoraProctorSDK)
+
+for SDK in ${SDK_Array[*]} 
+do
+  ${Build_Path}/build.sh ${SDK} ${Repo_Name}
+  
+  errorPrint $? "${SDK} Build"
+
+  if [ "${Package_Publish}" = true ];then
+    ${Pack_Path}/package_artifactory.sh ${SDK} ${BUILD_NUMBER} ${Repo_Name}
+
+    errorPrint $? "${SDK} Package"
+  fi
+done
+
+unset all_proxy
