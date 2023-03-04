@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # difference
-SDK_Name="AgoraProctorUI"
+SDK_Name="AgoraProctorSDK"
 Repo_Name="open-proctor-ios"
 
 # cd this file path
