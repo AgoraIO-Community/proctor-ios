@@ -1,9 +1,8 @@
 Pod::Spec.new do |spec|
   spec.name         = "AgoraProctorSDK"
-  spec.version      = "1.0.0"
-  spec.summary      = "Proctor scene SDK"
-
-  spec.description  = "Proctor scene binary SDK "
+  spec.version      = "1.0.1"
+  spec.summary      = "Proctor scene"
+  spec.description  = "Proctor scene SDK"
 
   spec.homepage     = 'https://docs.agora.io/en/agora-class/landing-page?platform=iOS'
   spec.license      = { "type" => "Copyright", "text" => "Copyright 2020 agora.io. All rights reserved." }
@@ -22,10 +21,7 @@ Pod::Spec.new do |spec|
   spec.user_target_xcconfig = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
   
   spec.subspec "Source" do |ss|
-    ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
-    ss.public_header_files = [
-      "SDKs/AgoraProctorSDK/Public/*.h"
-    ]
+    ss.source_files  = "SDKs/AgoraProctorSDK/*.{swift,h,m}"
 
     # open source libs
     ss.dependency "AgoraProctorUI/Source"
@@ -36,11 +32,8 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec "Build" do |ss|
-    ss.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
-    ss.public_header_files = [
-      "SDKs/AgoraProctorSDK/Public/*.h"
-    ]
-
+    ss.source_files  = "SDKs/AgoraProctorSDK/*.{swift,h,m}"
+    
     # open source libs
     ss.dependency "AgoraProctorUI/Binary"
       
