@@ -13,7 +13,9 @@ public typealias AgoraProctorMediaEncryptionMode = AgoraEduCoreMediaEncryptionMo
 public typealias AgoraProctorVideoEncoderConfig = AgoraEduCoreVideoConfig
 public typealias AgoraProctorLatencyLevel = AgoraEduCoreLatencyLevel
 public typealias AgoraProctorMirrorMode = AgoraEduCoreMirrorMode
+public typealias AgoraProctorExitReason = PtUISceneExitReason
 public typealias AgoraProctorUserRole = AgoraEduCoreUserRole
+public typealias AgoraProctorDelegate = PtUISceneDelegate
 public typealias AgoraProctorRegion = AgoraEduCoreRegion
 
 @objc public class AgoraProctorMediaOptions: NSObject {
@@ -132,7 +134,7 @@ public typealias AgoraProctorRegion = AgoraEduCoreRegion
     private(set) var scene: PtUIScene?
     
     @objc public init(config: AgoraProctorLaunchConfig,
-                      delegate: PtUISceneDelegate? = nil) {
+                      delegate: AgoraProctorDelegate? = nil) {
         self.config = config
         self.delegate = delegate
         
