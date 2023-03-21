@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = "AgoraProctorSDK"
-    spec.version      = "1.0.0"
+    spec.version      = "1.0.1"
     spec.summary      = "Invigilator scene SDK"
     spec.description  = "Agora Invigilator SDK"
     spec.homepage     = "https://docs.agora.io/en/agora-class/landing-page?platform=iOS"
@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = "10.0"
     
     # open source libs
-    spec.dependency "AgoraProctorUI", "1.0.0"
+    spec.dependency "AgoraProctorUI", "1.0.1"
     
     # close source libs
     spec.dependency "AgoraWidget", ">=2.8.0"
@@ -26,9 +26,6 @@ Pod::Spec.new do |spec|
     spec.user_target_xcconfig = { "VALID_ARCHS" => "arm64 armv7 x86_64" }
     spec.xcconfig             = { "BUILD_LIBRARY_FOR_DISTRIBUTION" => "YES" }
   
-    spec.source_files  = "SDKs/AgoraProctorSDK/**/*.{swift,h,m}"
-    spec.public_header_files = [
-        "SDKs/AgoraProctorSDK/Public/*.h"
-    ]
+    spec.source_files  = "SDKs/AgoraProctorSDK/*.{swift,h,m}"
   end
   
