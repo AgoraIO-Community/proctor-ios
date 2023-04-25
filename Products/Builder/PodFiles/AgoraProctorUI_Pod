@@ -1,3 +1,4 @@
+  pod 'Protobuf',          '3.17.0'
   
   # thirdLibs
   pod 'SwifterSwift', '5.2.0'
