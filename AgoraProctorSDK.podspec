@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
     spec.swift_versions        = ["5.0", "5.1", "5.2", "5.3", "5.4"]
     
     # open source libs
-    spec.dependency "AgoraProctorUI", "1.0.1"
+    spec.dependency "AgoraProctorUI", "1.0.0"
     
     # close source libs
     spec.dependency "AgoraWidget", ">=2.8.0"
