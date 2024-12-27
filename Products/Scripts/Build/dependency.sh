@@ -8,7 +8,7 @@
 Artifactory_iOS_URL="https://artifactory.agoralab.co/artifactory/AD_repo/aPaaS/iOS"
 
 AgoraEduCore_URL="${Artifactory_iOS_URL}/AgoraEduCore/release_2.8.105/dev/AgoraEduCore_2.8.105.zip"
-AgoraUIBaseViews_URL="${Artifactory_iOS_URL}/AgoraUIBaseViews/release_2.8.105/dev/AgoraUIBaseViews_2.8.105.zip"
+AgoraUIBaseViews_URL="${Artifactory_iOS_URL}/AgoraUIBaseViews/release_2.8.105/dev/AgoraUIBaseViews_2.8.101.zip"
 AgoraWidget_URL="${Artifactory_iOS_URL}/AgoraWidget/release_2.8.105/dev/AgoraWidget_2.8.105.zip"
 
 Dep_Array_URL=("${AgoraEduCore_URL}"
