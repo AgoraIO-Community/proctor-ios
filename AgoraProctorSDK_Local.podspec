@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "AgoraProctorSDK"
-  spec.version      = "1.0.2"
+  spec.version      = "2.8.120"
   spec.summary      = "Proctor scene"
   spec.description  = "Proctor scene SDK"
 
