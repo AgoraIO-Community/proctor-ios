@@ -57,4 +57,4 @@ def doPublish(buildVariables) {
     sh "rm -rf *.zip || true"
 }
 
-pipelineLoad(this, "Proctor_iOS", "build", "ios", "shadow")
+pipelineLoad(this, "Proctor_iOS", "build", "ios", "shadow && mac")
