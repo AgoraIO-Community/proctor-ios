@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = "AgoraProctorUI"
-    spec.version      = "1.0.2"
+    spec.version      = "2.8.112"
     spec.summary      = "Agora Proctor UI"
     spec.description  = "Agora Proctor UI SDK"
     spec.homepage     = "https://docs.agora.io/en/agora-class/landing-page?platform=iOS"
@@ -16,9 +16,9 @@ Pod::Spec.new do |spec|
     spec.source_files        = "SDKs/AgoraProctorUI/Classes/**/*.{h,m,swift}"
 
     # Agora libs
-    spec.dependency "AgoraUIBaseViews", "~> 2.8.101"
-    spec.dependency "AgoraEduCore",     "~> 2.8.105"
-    spec.dependency "AgoraWidget",      "~> 2.8.0"
+    spec.dependency "AgoraUIBaseViews", "~> 2.8.112"
+    spec.dependency "AgoraEduCore",     "~> 2.8.112"
+    spec.dependency "AgoraWidget",      "~> 2.8.112"
     
     # Third libs
     spec.dependency "SwifterSwift"
