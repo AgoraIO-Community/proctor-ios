@@ -23,7 +23,6 @@ Pod::Spec.new do |spec|
     # Third libs
     spec.dependency "SwifterSwift"
     spec.dependency "SDWebImage",       "<=5.12.0"
-    spec.dependency "Masonry"
     
     spec.pod_target_xcconfig  = { "EXCLUDED_ARCHS[sdk=iphonesimulator*]" => "arm64", "DEFINES_MODULE" => "YES" }
     spec.user_target_xcconfig = { "EXCLUDED_ARCHS[sdk=iphonesimulator*]" => "arm64", "DEFINES_MODULE" => "YES" }
