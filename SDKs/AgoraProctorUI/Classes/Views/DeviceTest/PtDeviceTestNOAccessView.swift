@@ -40,28 +40,28 @@ extension PtDeviceTestNOAccessView: AgoraUIContentContainer {
     }
     
     func initViewFrame() {
-        card.mas_makeConstraints { make in
+        card.agora_mas_makeConstraints { make in
             make?.left.equalTo()(10)
             make?.right.bottom().equalTo()(-10)
             make?.height.equalTo()(159)
         }
         
-        imageView.mas_makeConstraints { make in
+        imageView.agora_mas_makeConstraints { make in
             make?.top.equalTo()(card)?.offset()(-17.5)
             make?.right.equalTo()(card)?.offset()(-14.25)
             make?.width.height().equalTo()(100)
         }
         
-        titleLabel.mas_makeConstraints { make in
-            make?.left.equalTo()(card.mas_left)?.offset()(20)
-            make?.top.equalTo()(card.mas_top)?.offset()(30)
-            make?.right.equalTo()(imageView.mas_right)?.offset()(-20)
+        titleLabel.agora_mas_makeConstraints { make in
+            make?.left.equalTo()(card.agora_mas_left)?.offset()(20)
+            make?.top.equalTo()(card.agora_mas_top)?.offset()(30)
+            make?.right.equalTo()(imageView.agora_mas_right)?.offset()(-20)
         }
         
-        contentLabel.mas_makeConstraints { make in
-            make?.left.equalTo()(titleLabel.mas_left)
-            make?.top.equalTo()(titleLabel.mas_bottom)?.offset()(24)
-            make?.right.equalTo()(card.mas_right)?.offset()(-20)
+        contentLabel.agora_mas_makeConstraints { make in
+            make?.left.equalTo()(titleLabel.agora_mas_left)
+            make?.top.equalTo()(titleLabel.agora_mas_bottom)?.offset()(24)
+            make?.right.equalTo()(card.agora_mas_right)?.offset()(-20)
         }
     }
     
