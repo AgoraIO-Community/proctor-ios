@@ -37,8 +37,8 @@ class PtExamView: UIView {
     }
     
     func animate() {
-        self.renderView.mas_makeConstraints { make in
-            make?.top.equalTo()(self.nameLabel.mas_bottom)?.offset()(67)
+        self.renderView.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(self.nameLabel.agora_mas_bottom)?.offset()(67)
             make?.left.right().equalTo()(0)
             make?.bottom.equalTo()(-111)
         }
@@ -128,25 +128,25 @@ extension PtExamView: AgoraUIContentContainer {
     }
     
     public func initViewFrame() {
-        backgroundImageView.mas_makeConstraints { make in
+        backgroundImageView.agora_mas_makeConstraints { make in
             make?.left.right().top().equalTo()(0)
             make?.height.equalTo()(262.5)
         }
         
-        exitButton.mas_makeConstraints { make in
+        exitButton.agora_mas_makeConstraints { make in
             make?.top.equalTo()(42)
             make?.left.equalTo()(16)
             make?.width.height().equalTo()(40)
         }
         
-        examNameLabel.mas_makeConstraints { make in
+        examNameLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.top.equalTo()(nameLabel.mas_bottom)?.offset()(28)
+            make?.top.equalTo()(nameLabel.agora_mas_bottom)?.offset()(28)
         }
         
-        nameLabel.mas_makeConstraints { make in
+        nameLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.centerY.equalTo()(exitButton.mas_centerY)
+            make?.centerY.equalTo()(exitButton.agora_mas_centerY)
         }
         
         let beforeExamTipLabelSize = beforeExamTipLabel.calculateSize(font: UIConfig.exam.beforeExamTipLabel.font,
@@ -154,54 +154,54 @@ extension PtExamView: AgoraUIContentContainer {
                                                                       minSize: CGSize(width: 100,
                                                                                       height: 40))
         
-        beforeExamTipLabel.mas_makeConstraints { make in
+        beforeExamTipLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.bottom.equalTo()(renderView.mas_bottom)?.offset()(-66.57)
+            make?.bottom.equalTo()(renderView.agora_mas_bottom)?.offset()(-66.57)
             make?.width.equalTo()(beforeExamTipLabelSize.width)
             make?.height.equalTo()(beforeExamTipLabelSize.height)
         }
         
-        beforeExamCountdown.mas_makeConstraints { make in
+        beforeExamCountdown.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.bottom.equalTo()(renderView.mas_bottom)
+            make?.bottom.equalTo()(renderView.agora_mas_bottom)
             make?.width.equalTo()(297)
             make?.height.equalTo()(148)
         }
         
-        duringCountdown.mas_makeConstraints { make in
+        duringCountdown.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.top.equalTo()(nameLabel.mas_bottom)?.offset()(28)
+            make?.top.equalTo()(nameLabel.agora_mas_bottom)?.offset()(28)
             make?.height.equalTo()(24)
-            make?.width.mas_greaterThanOrEqualTo()(83)
+            make?.width.agora_mas_greaterThanOrEqualTo()(83)
         }
         
-        renderView.mas_makeConstraints { make in
-            make?.top.equalTo()(self.nameLabel.mas_bottom)?.offset()(138)
+        renderView.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(self.nameLabel.agora_mas_bottom)?.offset()(138)
             make?.left.right().equalTo()(0)
             make?.bottom.equalTo()(0)
         }
         
-        switchCameraButton.mas_makeConstraints { make in
+        switchCameraButton.agora_mas_makeConstraints { make in
             make?.top.equalTo()(renderView)?.offset()(20)
             make?.right.equalTo()(self)?.offset()(-20)
             make?.width.height().equalTo()(50)
         }
         
-        switchCameraButton.imageView?.mas_makeConstraints({ make in
+        switchCameraButton.imageView?.agora_mas_makeConstraints({ make in
             make?.centerX.centerY().equalTo()(switchCameraButton)
             make?.width.height().equalTo()(40)
         })
         
-        leaveButton.mas_makeConstraints { make in
+        leaveButton.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.width.mas_greaterThanOrEqualTo()(200)
+            make?.width.agora_mas_greaterThanOrEqualTo()(200)
             make?.height.equalTo()(46)
             make?.bottom.equalTo()(-40)
         }
         
-        endLabel.mas_makeConstraints { make in
+        endLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(self)
-            make?.bottom.equalTo()(renderView.mas_bottom)
+            make?.bottom.equalTo()(renderView.agora_mas_bottom)
             make?.width.equalTo()(200)
             make?.height.equalTo()(48)
         }

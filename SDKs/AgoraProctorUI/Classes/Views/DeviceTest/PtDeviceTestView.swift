@@ -45,9 +45,9 @@ class PtDeviceTestView: UIView {
                 
                 self.enterButton.isUserInteractionEnabled = true
                 self.enterButton.alpha = 1
-                self.enterButton.mas_remakeConstraints { make in
+                self.enterButton.agora_mas_remakeConstraints { make in
                     make?.centerX.equalTo()(0)
-                    make?.width.mas_greaterThanOrEqualTo()(200)
+                    make?.width.agora_mas_greaterThanOrEqualTo()(200)
                     make?.height.equalTo()(46)
                     make?.bottom.equalTo()(-40)
                 }
@@ -58,9 +58,9 @@ class PtDeviceTestView: UIView {
                 
                 self.enterButton.isUserInteractionEnabled = false
                 self.enterButton.alpha = 0.5
-                self.enterButton.mas_remakeConstraints { make in
+                self.enterButton.agora_mas_remakeConstraints { make in
                     make?.centerX.equalTo()(0)
-                    make?.width.mas_greaterThanOrEqualTo()(200)
+                    make?.width.agora_mas_greaterThanOrEqualTo()(200)
                     make?.height.equalTo()(46)
                     make?.bottom.equalTo()(-209)
                 }
@@ -116,63 +116,63 @@ extension PtDeviceTestView: AgoraUIContentContainer {
     }
     
     public func initViewFrame() {
-        backgroundImageView.mas_makeConstraints { make in
+        backgroundImageView.agora_mas_makeConstraints { make in
             make?.left.right().top().equalTo()(0)
             make?.height.equalTo()(262.5)
         }
         
-        exitButton.mas_makeConstraints { make in
+        exitButton.agora_mas_makeConstraints { make in
             make?.top.equalTo()(42)
             make?.left.equalTo()(16)
             make?.width.height().equalTo()(40)
         }
         
-        titleLabel.mas_makeConstraints { make in
+        titleLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.centerY.equalTo()(exitButton.mas_centerY)
+            make?.centerY.equalTo()(exitButton.agora_mas_centerY)
         }
         
-        greetLabel.mas_makeConstraints { make in
-            make?.top.equalTo()(exitButton.mas_bottom)?.offset()(30)
+        greetLabel.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(exitButton.agora_mas_bottom)?.offset()(30)
             make?.left.equalTo()(30)
-            make?.right.mas_greaterThanOrEqualTo()(-30)
+            make?.right.agora_mas_greaterThanOrEqualTo()(-30)
         }
         
-        stateLabel.mas_makeConstraints { make in
-            make?.top.equalTo()(greetLabel.mas_bottom)?.offset()(11)
-            make?.left.equalTo()(greetLabel.mas_left)
-            make?.right.mas_greaterThanOrEqualTo()(-30)
+        stateLabel.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(greetLabel.agora_mas_bottom)?.offset()(11)
+            make?.left.equalTo()(greetLabel.agora_mas_left)
+            make?.right.agora_mas_greaterThanOrEqualTo()(-30)
         }
         
-        renderView.mas_makeConstraints { make in
-            make?.top.equalTo()(stateLabel.mas_bottom)?.offset()(33)
+        renderView.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(stateLabel.agora_mas_bottom)?.offset()(33)
             make?.left.right().bottom().equalTo()(0)
         }
         
-        switchCameraButton.mas_makeConstraints { make in
+        switchCameraButton.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(self)
             make?.width.height().equalTo()(70)
             make?.bottom.equalTo()(-156)
         }
         
-        switchCameraLabel.mas_makeConstraints { make in
+        switchCameraLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(self)
-            make?.top.equalTo()(switchCameraButton.mas_bottom)?.offset()(12)
+            make?.top.equalTo()(switchCameraButton.agora_mas_bottom)?.offset()(12)
         }
         
-        enterButton.mas_makeConstraints { make in
+        enterButton.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(0)
-            make?.width.mas_greaterThanOrEqualTo()(200)
+            make?.width.agora_mas_greaterThanOrEqualTo()(200)
             make?.height.equalTo()(46)
             make?.bottom.equalTo()(-40)
         }
         
-        noAccessView.mas_makeConstraints { make in
-            make?.top.equalTo()(renderView.mas_top)?.offset()(148)
+        noAccessView.agora_mas_makeConstraints { make in
+            make?.top.equalTo()(renderView.agora_mas_top)?.offset()(148)
             make?.left.right().bottom().equalTo()(0)
         }
         
-        bottomView.mas_makeConstraints { make in
+        bottomView.agora_mas_makeConstraints { make in
             make?.left.right().bottom().equalTo()(0)
             make?.height.equalTo()(211)
         }

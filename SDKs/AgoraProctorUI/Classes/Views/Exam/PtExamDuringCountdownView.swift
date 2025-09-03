@@ -67,19 +67,19 @@ extension PtExamDuringCountdownView: AgoraUIContentContainer {
     }
     
     func initViewFrame() {
-        backView.mas_makeConstraints { make in
+        backView.agora_mas_makeConstraints { make in
             make?.left.centerY().equalTo()(self)
             make?.width.height().equalTo()(21)
         }
         
-        frontView.mas_makeConstraints { make in
+        frontView.agora_mas_makeConstraints { make in
             make?.centerY.equalTo()(self)
             make?.center.equalTo()(backView)
             make?.width.height().equalTo()(13.5)
         }
         
-        label.mas_makeConstraints { make in
-            make?.left.equalTo()(backView.mas_right)?.offset()(7.5)
+        label.agora_mas_makeConstraints { make in
+            make?.left.equalTo()(backView.agora_mas_right)?.offset()(7.5)
             make?.top.bottom().equalTo()(self)
         }
     }
