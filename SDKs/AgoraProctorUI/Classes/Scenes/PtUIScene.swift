@@ -7,7 +7,7 @@
 
 import AgoraUIBaseViews
 import AgoraEduCore
-import Masonry
+
 
 @objc public protocol PtUISceneDelegate: NSObjectProtocol {
     func onExit(reason: PtUISceneExitReason)
@@ -57,7 +57,7 @@ extension PtUIScene: PtDeviceTestUIComponentDelegate,
         addChild(exam)
         view.addSubview(exam.view)
         
-        exam.view.mas_makeConstraints { make in
+        exam.view.agora_mas_makeConstraints { make in
             make?.left.right().top().bottom().equalTo()(0)
         }
     }
@@ -91,7 +91,7 @@ extension PtUIScene: AgoraUIContentContainer {
         guard let deviceTest = deviceTest else {
             return
         }
-        deviceTest.view.mas_makeConstraints { make in
+        deviceTest.view.agora_mas_makeConstraints { make in
             make?.left.right().top().bottom().equalTo()(0)
         }
     }

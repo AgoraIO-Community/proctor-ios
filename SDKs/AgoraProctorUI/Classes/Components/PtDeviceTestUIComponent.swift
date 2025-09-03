@@ -107,7 +107,7 @@ extension PtDeviceTestUIComponent: AgoraUIContentContainer {
     }
     
     public func initViewFrame() {
-        contentView.mas_makeConstraints { make in
+        contentView.agora_mas_makeConstraints { make in
             make?.left.right().top().bottom().equalTo()(0)
         }
     }

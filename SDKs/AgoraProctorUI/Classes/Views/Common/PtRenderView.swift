@@ -54,13 +54,13 @@ extension PtRenderView: AgoraUIContentContainer {
     }
     
     func initViewFrame() {
-        avatarNameLabel.mas_makeConstraints { make in
+        avatarNameLabel.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(self)
             make?.top.equalTo()(148)
             make?.width.height().equalTo()(100)
         }
         
-        avatarImageView.mas_makeConstraints { make in
+        avatarImageView.agora_mas_makeConstraints { make in
             make?.centerX.equalTo()(self)
             make?.top.equalTo()(148)
             make?.width.height().equalTo()(100)
