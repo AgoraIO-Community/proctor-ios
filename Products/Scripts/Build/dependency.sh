@@ -7,7 +7,7 @@
 # Widget
 Artifactory_iOS_URL="https://artifactory.agoralab.co/artifactory/AD_repo/aPaaS/iOS"
 
-Version="2.8.125-hello"
+Version="2.8.127-hello"
 
 AgoraEduCore_URL="${Artifactory_iOS_URL}/AgoraEduCore/release_${Version}/dev/AgoraEduCore_${Version}.zip"
 AgoraUIBaseViews_URL="${Artifactory_iOS_URL}/AgoraUIBaseViews/release_${Version}/dev/AgoraUIBaseViews_${Version}.zip"
