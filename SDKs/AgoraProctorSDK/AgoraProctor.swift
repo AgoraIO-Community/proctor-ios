@@ -165,7 +165,9 @@ public typealias AgoraProctorRegion = AgoraEduCoreRegion
             
             self.scene = scene
             
-            let topVC = UIViewController.agora_top_view_controller()
+            guard let topVC = UIViewController.agora_top_view_controller() else {
+                return
+            }
             
             topVC.present(scene,
                           animated: true) {
